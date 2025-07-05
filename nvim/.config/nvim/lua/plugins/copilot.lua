@@ -29,7 +29,7 @@ return {
         suggestion = {
           enabled = true,
           auto_trigger = true,
-          kemap = {
+          keymap = {
             accept = "<M-y>",
             accept_word = "<M-w>",
             accept_line = "<M-l>",
