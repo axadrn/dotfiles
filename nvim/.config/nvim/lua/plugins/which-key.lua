@@ -26,6 +26,7 @@ return {
 			{ "<leader>s", group = "Search" },
 			{ "<leader>t", group = "Themes" },
 			{ "<leader>u", group = "UI" },
+			{ "<leader>w", group = "Window" },
 			{ "<leader>x", group = "Trouble" },
 		})
 	end,

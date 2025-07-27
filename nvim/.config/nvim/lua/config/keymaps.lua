@@ -24,9 +24,9 @@ vim.keymap.set("n", "<C-Down>", "<Cmd>resize +2<CR>", { desc = "Resize window do
 vim.keymap.set("n", "<C-Left>", "<Cmd>vertical resize -2<CR>", { desc = "Resize window left" })
 vim.keymap.set("n", "<C-Right>", "<Cmd>vertical resize +2<CR>", { desc = "Resize window right" })
 
--- Split windows
-vim.keymap.set("n", "|", "<Cmd>vsplit<CR>", { desc = "Vertical Split" })
-vim.keymap.set("n", "\\", "<Cmd>split<CR>", { desc = "Horizontal Split" })
+-- Split windows (using <leader>w prefix like LazyVim)
+vim.keymap.set("n", "<leader>wv", "<Cmd>vsplit<CR>", { desc = "Split Window Vertically" })
+vim.keymap.set("n", "<leader>ws", "<Cmd>split<CR>", { desc = "Split Window Horizontally" })
 
 -- Standard keymaps
 vim.keymap.set("n", "<Leader>w", "<Cmd>w<CR>", { desc = "Save" })
