@@ -1,5 +1,6 @@
 return {
   "ibhagwan/fzf-lua",
+  enabled = false, -- Temporarily disabled to test snacks
   dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = {
     "telescope", -- Use telescope defaults for familiar UI
@@ -32,7 +33,7 @@ return {
     -- File pickers
     { "<leader>ff",       "<cmd>FzfLua files<cr>",                    desc = "Find Files" },
     { "<leader>fo",       "<cmd>FzfLua oldfiles<cr>",                 desc = "Find Oldfiles" },
-    { "<leader><leader>", "<cmd>FzfLua buffers<cr>",                  desc = "Find Buffers" },
+    { "<leader><leader>", function() require("fzf-lua").buffers({ ignore_current_buffer = true }) end, desc = "Find Buffers" },
 
     -- Search pickers
     { "<leader>fw",       "<cmd>FzfLua grep_cword<cr>",               desc = "Find Word" },

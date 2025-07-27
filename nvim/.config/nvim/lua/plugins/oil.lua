@@ -1,5 +1,6 @@
 return {
 	"stevearc/oil.nvim",
+	enabled = false, -- Disable oil.nvim to use snacks explorer
 	opts = {},
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
@@ -13,6 +14,7 @@ return {
 			-- Windows: Recycle Bin
 			delete_to_trash = true,
 		})
+		vim.keymap.set("n", "<leader>e", "<CMD>Oil<CR>", { desc = "Open Explorer (Oil)" })
 		vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open Oil" })
 	end,
 }
