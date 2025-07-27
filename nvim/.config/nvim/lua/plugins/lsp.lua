@@ -91,7 +91,8 @@ return {
         "stylua",
         "eslint_d",
         "goimports",
-      },
+        "golangci-lint",
+      }
     })
 
     -- Enable all configured LSP servers
