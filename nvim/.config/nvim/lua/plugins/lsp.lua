@@ -1,7 +1,4 @@
----@diagnostic  isable-next-line: undefined-global
-local vim = vim
-local icons = require("config.icons").icons
-
+-- Register templ filetype
 vim.filetype.add({ extension = { templ = "templ" } })
 
 return {
@@ -10,58 +7,56 @@ return {
   dependencies = {
     "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
-    "neovim/nvim-lspconfig",
     "saghen/blink.cmp",
-    { "folke/neodev.nvim", opts = {} },
   },
   config = function()
     local mason = require("mason")
     local mason_lspconfig = require("mason-lspconfig")
     local mason_tool_installer = require("mason-tool-installer")
-    -- require("luasnip.loaders.from_vscode").lazy_load()
 
-    -- Set diagnostic icons
-    local signs = {
-      Error = icons.misc.Flame,
-      Warn = icons.misc.Flame,
-      Hint = icons.misc.Flame,
-      Info = icons.misc.Flame,
-    }
-    for type, icon in pairs(signs) do
-      local hl = "DiagnosticSign" .. type
-      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
-    end
+    -- Get capabilities from blink.cmp
+    local capabilities = require("blink.cmp").get_lsp_capabilities()
 
-    -- Global diagnostic keymaps
+    -- Configure diagnostics
+    local icons = require("config.icons").icons
+    vim.diagnostic.config({
+      virtual_text = true,
+      underline = true,
+      update_in_insert = false,
+      severity_sort = true,
+      signs = {
+        text = {
+          [vim.diagnostic.severity.ERROR] = icons.misc.Flame,
+          [vim.diagnostic.severity.WARN] = icons.misc.Flame,
+          [vim.diagnostic.severity.INFO] = icons.misc.Flame,
+          [vim.diagnostic.severity.HINT] = icons.misc.Flame,
+        },
+      },
+      float = {
+        border = "rounded",
+        source = true,
+      },
+    })
+
+    -- Custom diagnostic keymap (gl instead of default <C-W>d)
     vim.keymap.set("n", "gl", vim.diagnostic.open_float, { desc = "Hover Diagnostics" })
-    vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Previous Diagnostic" })
-    vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next Diagnostic" })
+    -- [d and ]d are already default keymaps in Neovim 0.10+
 
-    -- LSP Setup
-    local lsp_capabilities = require("blink.cmp").get_lsp_capabilities()
-
-    -- Setup LSP keymaps
-    vim.api.nvim_create_autocmd("LspAttach", {
-      desc = "LSP actions",
-      callback = function(event)
-        local opts = { buffer = event.buf }
+    -- Global config for all LSP servers
+    vim.lsp.config('*', {
+      capabilities = capabilities,
+      on_attach = function(client, bufnr)
+        local opts = { buffer = bufnr }
         local function map(key, func, desc)
           opts.desc = desc
           vim.keymap.set("n", key, func, opts)
         end
 
-        -- Navigation
+        -- Only mappings that are NOT default in Neovim 0.11
         map("gd", vim.lsp.buf.definition, "Go to Definition")
-        map("gr", vim.lsp.buf.references, "Find References")
-        map("gi", vim.lsp.buf.implementation, "Go to Implementation")
-        map("K", vim.lsp.buf.hover, "Hover Documentation")
         map("gs", vim.lsp.buf.signature_help, "Signature Help")
-
-        -- Actions
-        map("<leader>la", vim.lsp.buf.code_action, "Code Actions")
-        map("<leader>lr", vim.lsp.buf.rename, "Rename Symbol")
-
-        -- LSP management
+        
+        -- LSP management (no defaults for these)
         map("<leader>li", "<cmd>LspInfo<cr>", "LSP Info")
         map("<leader>ls", "<cmd>LspRestart<cr>", "LSP Restart")
       end,
@@ -78,7 +73,7 @@ return {
       },
     })
 
-    -- Configure language servers
+    -- Install language servers via Mason
     mason_lspconfig.setup({
       ensure_installed = {
         "tsserver",
@@ -98,53 +93,8 @@ return {
         "dockerls",
       },
       automatic_installation = true,
-      handlers = {
-        function(server)
-          require("lspconfig")[server].setup({
-            capabilities = lsp_capabilities,
-          })
-        end,
-        lua_ls = function()
-          -- Special setup for Lua
-          require("lspconfig").lua_ls.setup({
-            capabilities = lsp_capabilities,
-            settings = {
-              Lua = {
-                diagnostics = {
-                  globals = { "vim" },
-                },
-              },
-            },
-          })
-        end,
-        templ = function()
-          require("lspconfig").templ.setup({
-            capabilities = lsp_capabilities,
-            filetypes = { "templ" },
-          })
-        end,
-        -- tailwindcss
-        tailwindcss = function()
-          require("lspconfig").tailwindcss.setup({
-            capabilities = lsp_capabilities,
-            filetypes = { "templ", "astro", "javascript", "typescript", "react" },
-            init_options = { userLanguages = { templ = "html" } },
-          })
-        end,
-        html = function()
-          require("lspconfig").html.setup({
-            capabilities = lsp_capabilities,
-            filetypes = { "html", "templ" },
-          })
-        end,
-        htmx = function()
-          require("lspconfig").htmx.setup({
-            capabilities = lsp_capabilities,
-            filetypes = { "html", "templ" },
-          })
-        end,
-      },
     })
+
     -- Configure formatters/linters
     mason_tool_installer.setup({
       ensure_installed = {
@@ -153,6 +103,21 @@ return {
         "eslint_d",
         "goimports",
       },
+    })
+
+    -- Enable all configured LSP servers
+    vim.lsp.enable({
+      "gopls",
+      "ts_ls",
+      "html",
+      "cssls",
+      "tailwindcss",
+      "svelte",
+      "lua_ls",
+      "emmet_ls",
+      "templ",
+      "htmx",
+      "bashls",
     })
   end,
 }
