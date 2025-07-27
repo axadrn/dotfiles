@@ -20,8 +20,6 @@ return {
     -- Configure diagnostics
     local icons = require("config.icons").icons
     vim.diagnostic.config({
-      virtual_text = true,
-      underline = true,
       update_in_insert = false,
       severity_sort = true,
       signs = {
@@ -40,7 +38,6 @@ return {
 
     -- Custom diagnostic keymap (gl instead of default <C-W>d)
     vim.keymap.set("n", "gl", vim.diagnostic.open_float, { desc = "Hover Diagnostics" })
-    -- [d and ]d are already default keymaps in Neovim 0.10+
 
     -- Global config for all LSP servers
     vim.lsp.config('*', {
@@ -55,7 +52,7 @@ return {
         -- Only mappings that are NOT default in Neovim 0.11
         map("gd", vim.lsp.buf.definition, "Go to Definition")
         map("gs", vim.lsp.buf.signature_help, "Signature Help")
-        
+
         -- LSP management (no defaults for these)
         map("<leader>li", "<cmd>LspInfo<cr>", "LSP Info")
         map("<leader>ls", "<cmd>LspRestart<cr>", "LSP Restart")
@@ -63,15 +60,7 @@ return {
     })
 
     -- Mason setup
-    mason.setup({
-      ui = {
-        icons = {
-          package_installed = "✓",
-          package_pending = "➜",
-          package_uninstalled = "✗",
-        },
-      },
-    })
+    mason.setup({})
 
     -- Install language servers via Mason
     mason_lspconfig.setup({
