@@ -11,7 +11,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     "neovim/nvim-lspconfig",
-    "hrsh7th/cmp-nvim-lsp",
+    "saghen/blink.cmp",
     { "folke/neodev.nvim", opts = {} },
   },
   config = function()
@@ -38,7 +38,7 @@ return {
     vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Next Diagnostic" })
 
     -- LSP Setup
-    local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
+    local lsp_capabilities = require("blink.cmp").get_lsp_capabilities()
 
     -- Setup LSP keymaps
     vim.api.nvim_create_autocmd("LspAttach", {
@@ -120,6 +120,7 @@ return {
         templ = function()
           require("lspconfig").templ.setup({
             capabilities = lsp_capabilities,
+            filetypes = { "templ" },
           })
         end,
         -- tailwindcss
