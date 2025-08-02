@@ -61,30 +61,3 @@ vim.keymap.set("i", "<A-k>", "<esc><cmd>m .-2<cr>==gi", { desc = "Move Up" })
 vim.keymap.set("v", "<A-k>", ":<C-u>execute \"'<,'>move '<-\" . (v:count1 + 1)<cr>gv=gv", { desc = "Move Up" })
 vim.keymap.set("v", "<A-j>", ":'<,'>move '>+1<CR>gv=gv", { desc = "Move Down", silent = true })
 vim.keymap.set("v", "<A-k>", ":'<,'>move '<-2<CR>gv=gv", { desc = "Move Up", silent = true })
-
--- Toggle Whitespace Chars
-local function toggle_listchars()
-  if vim.opt.list:get() then
-    vim.opt.list = false
-    vim.notify("Listchars disabled")
-  else
-    vim.opt.list = true
-    vim.wo.listchars = "space:·,tab:→ "
-    vim.notify("Listchars enabled")
-  end
-end
-vim.keymap.set("n", "<leader>uw", toggle_listchars, { desc = "Toggle Whitespace Chars" })
-
--- -- Toggle Copilot
--- local copilot_on = true
--- vim.api.nvim_create_user_command("CopilotToggle", function()
---   if copilot_on then
---     vim.cmd("Copilot disable")
---     vim.notify("Copilot OFF")
---   else
---     vim.cmd("Copilot enable")
---     vim.notify("Copilot ON")
---   end
---   copilot_on = not copilot_on
--- end, { nargs = 0 })
--- vim.keymap.set("n", "<leader>ua", ":CopilotToggle<CR>", { desc = "Toggle Copilot", silent = true })
