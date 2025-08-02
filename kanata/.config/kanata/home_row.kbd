@@ -1,0 +1,60 @@
+;; ==========================================
+;; KANATA CONFIGURATION - HOME ROW MODS
+;; ==========================================
+;; Using GACS order (GUI-Alt-Control-Shift) from Miryoku layout
+;;
+;; Features:
+;; - Control: tap = Escape, hold = Control
+;; - Home row mods on both hands (GACS order)
+;; - Space: tap = Space, hold = Navigation layer
+;;   - hjkl = arrow keys
+;;   - m = Backspace, n = Enter, , = Delete
+;; - Caps Lock mapped to Control in macOS settings
+;; ==========================================
+
+;; Configuration settings
+(defcfg
+  process-unmapped-keys yes
+)
+
+;; Physical keys to remap
+(defsrc
+  esc
+  a s d f g h j k l ;
+  caps lctl spc m n ,
+)
+
+;; Aliases for tap-hold behavior
+(defalias
+  ;; Space as navigation layer trigger
+  spc (tap-hold 200 200 spc (layer-toggle nav))
+  
+  ;; Control key with Escape on tap
+  ctl (tap-hold 200 200 esc lctl)
+)
+
+;; Default layer with home row mods (GACS order)
+(deflayer default
+  esc
+  ;; Left hand: GACS order
+  (tap-hold 200 200 a lmet)    ;; A = GUI/Cmd (pinky)
+  (tap-hold 200 200 s lalt)    ;; S = Alt (ring)
+  (tap-hold 200 200 d lctl)    ;; D = Control (middle)
+  (tap-hold 200 200 f lsft)    ;; F = Shift (index)
+  g
+  h
+  ;; Right hand: GACS order (mirrored)
+  (tap-hold 200 200 j rsft)    ;; J = Shift (index)
+  (tap-hold 200 200 k rctl)    ;; K = Control (middle)
+  (tap-hold 200 200 l ralt)    ;; L = Alt (ring)
+  (tap-hold 200 200 ; rmet)    ;; ; = GUI/Cmd (pinky)
+  @ctl lctl @spc m n ,
+)
+
+;; Navigation layer - activated by holding Space
+(deflayer nav
+  _                             ;; Escape stays Escape
+  _ _ _ _ _                     ;; asdfg stay normal
+  left down up right _          ;; hjkl become arrow keys, ; stays normal
+  _ _ _ bspc ret del            ;; m=Backspace, n=Enter, ,=Delete
+)
