@@ -1,6 +1,7 @@
 #rPaths
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH=$PATH:~/go/bin
+export PATH="$HOME/.cargo/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin
 export PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
 
@@ -25,3 +26,9 @@ function nvims() {
 
 # Plugins
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# Kanata aliases
+alias kanata-start='sudo -b kanata -c ~/.config/kanata/home_row.kbd'
+alias kanata-stop='sudo pkill kanata'
+alias kanata-restart='kanata-stop && kanata-start'
+alias kanata-status='pgrep -l kanata'
