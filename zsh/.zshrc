@@ -1,4 +1,4 @@
-#rPaths
+# Paths
 export PATH="/opt/homebrew/bin:$PATH"
 export PATH=$PATH:~/go/bin
 export PATH="$HOME/.cargo/bin:$PATH"
@@ -11,3 +11,5 @@ PROMPT=$'\n%~ %F{yellow}$(git branch 2>/dev/null | grep "*" | cut -d " " -f2)%f 
 
 # Plugins
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# eval "$(starship init zsh)"
