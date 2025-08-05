@@ -1,9 +1,9 @@
 theme = Kanagawa Dragon
 
-font-family = JetBrainsMono NFM SemiBold
 font-feature = -calt,-liga,-dlig
 
 window-padding-x = 0
 window-padding-y = 0
 window-padding-balance = true
+
 mouse-hide-while-typing = true

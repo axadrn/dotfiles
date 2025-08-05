@@ -1,5 +1,0 @@
-os:
-  edit: "nvim {{filename}}"
-git:
-  paging:
-    externalDiffCommand: difft --color=always
