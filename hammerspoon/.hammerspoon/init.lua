@@ -12,6 +12,6 @@ for key, appName in pairs(apps) do
   end)
 end
 
-hs.hotkey.bind(hyper, "", function()
+hs.hotkey.bind(hyper, "X", function()
   hs.urlevent.openURL("https://twitter.com/intent/tweet")
 end)
