@@ -28,9 +28,5 @@ return {
         timeout_ms = 1000,
       },
     })
-
-    vim.keymap.set({ "n", "v" }, "<leader>lf", function()
-      require("conform").format({ async = true, lsp_fallback = true })
-    end, { desc = "Format Buffer/Range(V) - (conform)" })
   end,
 }

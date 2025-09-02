@@ -1,5 +1,5 @@
 return {
-  enabled = false,
+  enabled = true,
   "rachartier/tiny-inline-diagnostic.nvim",
   event = "VeryLazy",
   config = function()
