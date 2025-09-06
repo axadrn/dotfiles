@@ -86,6 +86,7 @@ return {
         "stylua",
         "eslint_d",
         "goimports",
+        "golangci-lint",
       }
     })
 
