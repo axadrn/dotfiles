@@ -70,16 +70,11 @@ return {
         "html",
         "cssls",
         "tailwindcss",
-        "svelte",
         "lua_ls",
-        "emmet_ls",
         "gopls",
         "templ",
         "htmx",
-        "astro",
         "bashls",
-        "docker_compose_language_service",
-        "dockerls",
       },
       automatic_installation = true,
     })
@@ -91,7 +86,6 @@ return {
         "stylua",
         "eslint_d",
         "goimports",
-        "golangci-lint",
       }
     })
 
@@ -102,12 +96,9 @@ return {
       "html",
       "cssls",
       "tailwindcss",
-      "svelte",
       "lua_ls",
-      "emmet_ls",
       "templ",
       "htmx",
-      "bashls",
     })
   end,
 }
