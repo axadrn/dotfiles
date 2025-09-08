@@ -1,5 +1,5 @@
 return {
-  enabled = false,
+  enabled = true,
   "lewis6991/gitsigns.nvim",
   config = function()
     local gs = require("gitsigns")
