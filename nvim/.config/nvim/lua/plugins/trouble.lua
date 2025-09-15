@@ -1,7 +1,5 @@
 return {
-  -- "folke/trouble.nvim",
-  "h-michael/trouble.nvim",
-  branch = "fix/decoration-provider-api",
+  "folke/trouble.nvim",
   keys = {
     {
       "<leader>xx",
