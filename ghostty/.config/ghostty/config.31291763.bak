@@ -7,4 +7,3 @@ window-padding-y = 0
 window-padding-balance = true
 
 mouse-hide-while-typing = true
-keybind = shift+enter=text:\x1b\r
