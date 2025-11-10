@@ -14,7 +14,7 @@ return {
         css = { "prettierd" },
         json = { "prettierd" },
         yaml = { "prettierd" },
-        -- markdown = { "prettierd" },
+        markdown = { "prettierd" },
         graphql = { "prettierd" },
         liquid = { "prettierd" },
         -- lua = { "stylua" },
