@@ -5,6 +5,7 @@
   "conform.nvim": { "branch": "master", "commit": "26c02e1155a4980900bdccabca4516f4c712aae9" },
   "copilot.lua": { "branch": "master", "commit": "389cfc58122b076e2aad1f9f34d1dfdd5a5bfd0e" },
   "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
+  "dropbar.nvim": { "branch": "master", "commit": "ce202248134e3949aac375fd66c28e5207785b10" },
   "grug-far.nvim": { "branch": "main", "commit": "3e72397465f774b01aa38e4fe8e6eecf23d766d9" },
   "kanagawa.nvim": { "branch": "master", "commit": "aef7f5cec0a40dbe7f3304214850c472e2264b10" },
   "lazy.nvim": { "branch": "main", "commit": "202d8e92b3a74ac88eb3a7f1e40fb59b4c2a6535" },

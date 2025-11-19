@@ -39,7 +39,7 @@ return {
     -- File pickers
     { "<leader>ff",       function() require("snacks").picker.files() end,                      desc = "Find Files" },
     { "<leader>fo",       function() require("snacks").picker.recent() end,                     desc = "Find Oldfiles" },
-    { "<leader><leader>", function() require("snacks").picker.buffers({ current = false }) end, desc = "Find Buffers" },
+    { "<leader><leader>", function() require("snacks").picker.buffers({ sort_mru = true, current = false }) end, desc = "Find Buffers" },
 
     -- Search pickers
     { "<leader>fw",       function() require("snacks").picker.grep_word() end,                  desc = "Find Word" },

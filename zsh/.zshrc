@@ -13,3 +13,7 @@ eval "$(starship init zsh)"
 # Aliases
 alias brewdump="brew bundle dump --file ~/dotfiles/Brewfile -f"
 alias brewinstall="brew bundle install --file ~/dotfiles/Brewfile"
+
+# Docker/Colima
+export DOCKER_HOST="unix://$HOME/.colima/default/docker.sock"
+export DOCKER_CONFIG=/opt/homebrew/lib/docker
