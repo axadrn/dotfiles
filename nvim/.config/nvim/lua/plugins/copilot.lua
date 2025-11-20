@@ -1,50 +1,50 @@
 return {
-  {
-    "zbirenbaum/copilot.lua",
-    enabled = true,
-    cmd = "Copilot",
-    event = "InsertEnter",
-    keys = {
-      {
-        "<leader>ua",
-        function()
-          local copilot_client = require("copilot.client")
-          local copilot_command = require("copilot.command")
+	{
+		"zbirenbaum/copilot.lua",
+		enabled = true,
+		cmd = "Copilot",
+		event = "InsertEnter",
+		keys = {
+			{
+				"<leader>ta",
+				function()
+					local copilot_client = require("copilot.client")
+					local copilot_command = require("copilot.command")
 
-          if copilot_client.is_disabled() then
-            copilot_command.enable()
-            vim.notify("Copilot ON")
-          else
-            copilot_command.disable()
-            vim.notify("Copilot OFF")
-          end
-        end,
-        desc = "Toggle Copilot",
-      },
-    },
-    config = function()
-      local copilot = require("copilot")
+					if copilot_client.is_disabled() then
+						copilot_command.enable()
+						vim.notify("Copilot enabled", vim.log.levels.INFO)
+					else
+						copilot_command.disable()
+						vim.notify("Copilot disabled", vim.log.levels.WARN)
+					end
+				end,
+				desc = "Toggle Copilot",
+			},
+		},
+		config = function()
+			local copilot = require("copilot")
 
-      copilot.setup({
-        suggestion = {
-          enabled = true,
-          auto_trigger = true,
-          keymap = {
-            accept = "<M-y>",
-            accept_word = "<M-w>",
-            accept_line = "<M-l>",
-            next = "<M-]>",
-            prev = "<M-[>",
-            dismiss = "<C-]>",
-          },
-        },
-        panel = { enabled = false },
-      })
+			copilot.setup({
+				suggestion = {
+					enabled = true,
+					auto_trigger = true,
+					keymap = {
+						accept = "<M-y>",
+						accept_word = "<M-w>",
+						accept_line = "<M-l>",
+						next = "<M-]>",
+						prev = "<M-[>",
+						dismiss = "<C-]>",
+					},
+				},
+				panel = { enabled = false },
+			})
 
-      -- Disable Copilot on startup
-      vim.defer_fn(function()
-        require("copilot.command").disable()
-      end, 100)
-    end,
-  },
+			-- Disable Copilot on startup
+			vim.defer_fn(function()
+				require("copilot.command").disable()
+			end, 100)
+		end,
+	},
 }

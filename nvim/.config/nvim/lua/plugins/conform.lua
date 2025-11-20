@@ -17,7 +17,7 @@ return {
         markdown = { "prettierd" },
         graphql = { "prettierd" },
         liquid = { "prettierd" },
-        -- lua = { "stylua" },
+        lua = { "stylua" },
         html = { "prettierd" },
         templ = { "templ", },
         go = { "goimports", "gopls" },

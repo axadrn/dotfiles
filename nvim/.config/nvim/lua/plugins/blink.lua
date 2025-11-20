@@ -2,6 +2,28 @@ return {
   "saghen/blink.cmp",
   lazy = false,
   version = "v0.*",
+  keys = {
+    {
+      "<leader>tc",
+      function()
+        local config = require("blink.cmp.config")
+        local menu = require("blink.cmp.completion.windows.menu")
+        local current_state = config.completion.menu.auto_show
+
+        if current_state == true then
+          config.completion.menu.auto_show = false
+          menu.auto_show = false
+          menu.close()
+          vim.notify("Completion auto-show disabled (Ctrl+Space to trigger)", vim.log.levels.WARN)
+        else
+          config.completion.menu.auto_show = true
+          menu.auto_show = true
+          vim.notify("Completion auto-show enabled", vim.log.levels.INFO)
+        end
+      end,
+      desc = "Toggle Completion Auto-show",
+    },
+  },
   opts = {
     keymap = {
       preset = "default",
