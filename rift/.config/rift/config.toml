@@ -17,7 +17,7 @@
 #   ease_in_expo, ease_out_expo, ease_in_out_expo,
 #   ease_in_circ, ease_out_circ, ease_in_out_circ
 animate = true
-animation_duration = 0.4
+animation_duration = 0.5
 animation_fps = 120.0
 animation_easing = "ease_in_out_sine"
 
@@ -62,10 +62,10 @@ auto_focus_blacklist = []
 #   RIFT_EVENT_JSON            # full JSON payload of the event
 #
 # Example (sketchybar integration):
-run_on_start = [
-  "rift-cli subscribe cli --event workspace_changed --command sh --args -c --args 'sketchybar --trigger rift_workspace_changed RIFT_WORKSPACE_NAME=\"$RIFT_WORKSPACE_NAME\" RIFT_WORKSPACE_ID=\"$RIFT_WORKSPACE_ID\"'",
-  "rift-cli subscribe cli --event windows_changed --command sh --args -c --args 'sketchybar --trigger rift_windows_changed RIFT_WORKSPACE_NAME=\"$RIFT_WORKSPACE_NAME\" RIFT_WINDOW_COUNT=\"$RIFT_WINDOW_COUNT\"'"
-]
+# run_on_start = [
+#   "rift-cli subscribe cli --event workspace_changed --command sh --args -c --args 'sketchybar --trigger rift_workspace_changed RIFT_WORKSPACE_NAME=\"$RIFT_WORKSPACE_NAME\" RIFT_WORKSPACE_ID=\"$RIFT_WORKSPACE_ID\"'",
+#   "rift-cli subscribe cli --event windows_changed --command sh --args -c --args 'sketchybar --trigger rift_windows_changed RIFT_WORKSPACE_NAME=\"$RIFT_WORKSPACE_NAME\" RIFT_WINDOW_COUNT=\"$RIFT_WINDOW_COUNT\"'"
+# ]
 
 run_on_start = []
 
