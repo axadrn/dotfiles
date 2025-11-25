@@ -6,5 +6,8 @@ window-padding-x = 0
 window-padding-y = 0
 window-padding-balance = true
 
+background-opacity = 0.7
+background-blur = true
+
 mouse-hide-while-typing = true
 keybind = shift+enter=text:\x1b\r
