@@ -6,7 +6,10 @@ window-padding-x = 0
 window-padding-y = 0
 window-padding-balance = true
 
-background-opacity = 0.9
-background-blur = 10
+macos-titlebar-proxy-icon = hidden
+title = " "
+
+background-opacity = 0.95
+background-blur = true
 
 mouse-hide-while-typing = true

@@ -43,8 +43,8 @@ return {
           local mode, mode_hl = statusline.section_mode({})
           local git = vim.b.minigit_summary_string or ""
           local root = vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
-          local file = vim.fn.expand("%:~:.")
-          local filename = (file ~= "" and root .. " › " .. file:gsub("/", " › ")) or "[No Name]"
+          local file = vim.fn.expand("%:t")
+          local filename = (file ~= "" and root .. " › " .. file) or "[No Name]"
           local location = statusline.section_location({})
           return statusline.combine_groups({
             { hl = mode_hl,                  strings = { mode } },
