@@ -6,7 +6,7 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
-[credential]
-    helper = osxkeychain
 [init]
 	defaultBranch = main
+[url "git@github.com:"]
+	insteadOf = https://github.com/
